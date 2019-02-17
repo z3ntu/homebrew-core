@@ -32,6 +32,12 @@ class Hidapi < Formula
     sha256 "c0ff6eb370d6b875c06d72724a1a12fa0bafcbd64b2610014abc50a516760240"
   end
 
+  # This patch sets a valid interface number on hid_device_info for USB HID devices
+  patch do
+    url "https://github.com/signal11/hidapi/pull/380.patch?full_index=1"
+    sha256 "0dc3d6bceafc69a471e65a7ceee1095dfd0a64fb84e34d22967a55905169daa1"
+  end
+
   def install
     system "./bootstrap"
     system "./configure", "--prefix=#{prefix}"
